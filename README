@@ -1,0 +1,48 @@
+Tema 1
+    Task 1
+        - function [Labyrinth] = parse_labyrinth(file_path)
+            Acest cod deschide un fisier dat de calea file_path si citeste 
+            dimensiunile labirintului din prima linie a fisierului. Apoi 
+            initializeaza o matrice goala Labyrinth cu dimensiunile labirintului 
+            citite si citeste codificarile zidurilor pentru fiecare rand al 
+            labirintului din fisier, punandu-le in matricea Labyrinth. In final, 
+            se inchide fisierul si se returneaza matricea Labyrinth.
+        -  function [Adj] = get_adjacency_matrix(Labyrinth)
+            Acest cod genereaza matricea de adiacenta asociata unui labirint dat. 
+            Mai intai se determina dimensiunile matricei labirintului si se initializeaza 
+            matricea de adiacenta. Apoi, pentru fiecare celula din labirint, se verifica 
+            peretele celulei respective (conform: Bitul b3 setat pe 1 indica un zid la nordul 
+            celulei; Bitul b2 setat pe 1 indică un zid la sudul celulei; Bitul b1 setat pe 1 
+            indică un zid la estul celulei; Bitul b0 setat pe 1 indică un zid la vestul celulei;) 
+            si se adauga muchiile corespunzatoare in matricea de adiacenta. 
+            In final, se returneaza matricea de adiacenta generata.
+        - function [Link] = get_link_matrix(Labyrinth)
+            Pentru fiecare linie din matricea de adiacenta se calculeaza suma elementelor 
+            si apoi se completeaza matricea de legaturi cu valori proportionale cu 1/suma 
+            elementelor. Aceasta valoare este adaugata doar acolo unde exista o legatura 
+            intre doua noduri (cand elementul din matricea de adiacenta este 1).
+        - function [G, c] = get_Jacobi_parameters(Link)
+            Extragem ultima coloana din Link și o punem în vectorul c. Extragem matricea de 
+            legaturi G din Link, facand o taietura la ultima coloana
+        - function [x, err, steps] = perform_iterative(G, c, x0, tol, max_steps)
+            Functia implementeaza un algoritm iterativ pentru rezolvarea unui sistem de 
+            ecuatii liniare dat prin matricea G si vectorul c. Aceasta primeste si un 
+            vector initial x0, o toleranta acceptata tol si numarul maxim de iteratii 
+            max_steps. Functia returneaza vectorul solutiei x, eroarea de diferenta err 
+            si numarul de iteratii efectuate steps. In implementare, ultimele doua linii 
+            din matricea G sunt eliminate si vectorul initial este inlocuit cu vectorul c 
+            pentru a se obtine o solutie mai rapida.
+
+    Task 3
+        - function [X, y] = load_dataset(path)
+        Aceasta functie încarca un fisier .mat (Matlab format) de la calea relativa specificata 
+        si extrage doua variabile din structura încărcata: X, reprezentand setul de date de 
+        antrenament, si y, reprezentand etichetele corespunzatoare fiecarui exemplu din X
+
+
+In cazul in care pe vmchecker primesc eroare, doresc sa se corecteze tema manual, pe local primesc la teste 23p.
+
+https://curs.upb.ro/2022/pluginfile.php/466769/mod_resource/content/1/octavetut.pdf
+https://curs.upb.ro/2022/pluginfile.php/466771/mod_resource/content/1/MatlabCommands.pdf
+https://curs.upb.ro/2022/pluginfile.php/466772/mod_resource/content/1/refcard-a4.pdf
+https://curs.upb.ro/2022/pluginfile.php/466770/mod_resource/content/1/octave_manual.pdf
